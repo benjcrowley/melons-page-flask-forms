@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<!-- Inside the body of the page, we want to display the following information about the melon using Jinja template tags: -->
+<!-- 
+A picture of the melon
+Common name
+Price, in dollars-and-cents format
+Color
+If seedless, display the text “Seedless”. If not, display the text “Warning: This melon has seeds!” (Use a Jinja if statement to do this!) -->
+
+<img class="melon-image"  src="{{ melon.image_url }}" alt="a picture of a {{ melon.common_name }}">
+<h2>{{ melon.common_name }}</h2>
+<h5>{{ melon.price_str() }}</h5>
+<ul>
+    <li>Color: {{ melon.color }}</li>
+    {% if melon.seedless %}
+        <li>Seedless: {{ melon.seedless }}</li>
+    {% else %}
+        <li>Warning: This melon has seeds!</li>
+    {% endif %}
+    </ul>
+
+<!-- a hyperlink button to add this melon to your shopping cart. You can use the Bootstrap classes btn and btn-primary to make a hyperlink (<a> tag) appear as a blue button. -->
+<a href="{{ url_for('add_to_cart', melon_id=melon.melon_id) }}" class="btn btn-primary">Add to Cart</a>
+
+    {% endblock %}

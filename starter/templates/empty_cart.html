@@ -1,0 +1,8 @@
+{% extends "base.html" %} 
+
+{% block body %}
+
+<h1>Your cart is empty!</h1> 
+<!-- Display a button to continue shopping -->
+<a href="{{ url_for('melons') }}" class="btn btn-primary">Continue Shopping</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+/* melon-images should all be the same size: 300px by 300px */
+.melon-image {
+    width: 300px;
+    height: 300px;
+}
+/* melon list should fit as many images as possible on a single row */
+#melon-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

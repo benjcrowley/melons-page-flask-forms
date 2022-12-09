@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+
+    <h1>Here are all the melons</h1>
+    <!-- loop through all the melon class objects in melon_list using a Jinja for loop -->
+    <div id="melon-list">
+
+        {% for melon in melons_list %}
+        <div class="card text-center">
+            
+            <a href="{{ url_for('melon_details', melon_id=melon.melon_id) }}"><img class="melon-image" src="{{melon.image_url}}" alt=" a picture of a {{melon.common_name}}" ></a>
+            
+            <a href="{{ url_for('melon_details', melon_id=melon.melon_id) }}"><h5>{{ melon.common_name }}</h5></a>
+    
+                <p>Price: {{ melon.price_str() }}</p>
+            </div>
+                {% endfor %}
+    </div>
+                
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th scope="col">Melon</th>
+            <th scope="col">add</th>
+            <th scope="col">remove</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for melon in cart_melons %}
+        <tr>
+            <!-- display the melon name and a button next to it with an endpoint to add one more of the item to the cart and one button to decrease quantity from the cart -->
+            <td>{{ melon.common_name }} 
+            <td><a href="{{ url_for('add_to_cart', melon_id=melon.melon_id) }}" class="btn btn-primary">+</a></td>
+            <td><a href="{{ url_for('remove_from_cart', melon_id=melon.melon_id) }}" class="btn btn-danger">-</a></td>
+            <td>{{ melon.quantity }}</td>
+            <td>{{ melon.price_str() }}</td>
+            <td>{{ "%0.2f" | format(melon.subtotal) }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="3">Total</td>
+            <td>{{ "%0.2f" | format(order_total) }}</td>
+    </tbody>
+</table>
+
+
+<!-- Display the total of the entire cart (sum of all subtotals) -->
+
+<!-- Display a button to empty cart -->
+<a href="{{ url_for('empty_cart') }}" class="btn btn-danger">Empty Cart</a>
+<!-- Display a button to continue shopping -->
+<a href="{{ url_for('melons') }}" class="btn btn-primary">Continue Shopping</a>
+
+{% endblock %}
+
