@@ -4,6 +4,7 @@ from pprint import pprint
 melons_list = []
 melons_dictionary = {}
 
+
 class Melon:
     """
     A melon in a melon type
@@ -39,7 +40,6 @@ class Melon:
     def price_str(self):
         """return price in string format $x.xx"""
         return f"${self.price:.2f}"
-
 
 
 with open("melons.csv", "r") as file:
